@@ -1,3 +1,0 @@
-/Users/heefan/notes/design-patterns-notes/behavoir/observer/01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/heefan/notes/design-patterns-notes/behavoir/observer/01/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/heefan/notes/design-patterns-notes/behavoir/observer/01/cmake-build-debug/CMakeFiles/01.dir
