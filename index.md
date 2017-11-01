@@ -1,10 +1,14 @@
 # 设计模式
 
 自己看得懂的设计模式！
+根据自己现在的知识储备，是要熟记设计模式的，而不是先查再尝试。
+所以写代码是次要的，思考中主要的。
 
 
 
 ## 分类
+
+https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html
 
 按照《图说设计模式》目录，
 
