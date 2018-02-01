@@ -10,7 +10,11 @@ Apple, iOS 参见 apple/design-patterns/
 根据自己现在的知识储备，是要熟记设计模式的，而不是先查再尝试。
 所以写代码是次要的，思考中主要的。
 
+## 原则
 
+“单一职责原则”
+
+“开闭原则”
 
 ## 分类
 
@@ -31,6 +35,7 @@ https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer
    * 策略模式(Strategy)  重要程度：4
    * 模板方法模式(Template Method)  重要程度：3
    * 访问者模式(Visitor)  重要程度：1
+
 
 
 

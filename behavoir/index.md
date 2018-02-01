@@ -65,6 +65,14 @@ Behavior 模式中有几个模式很重要，
 
 
 
+**See:**
+
+1. Head First Design Patterns ,chapter 9
+2. 设计模式之禅，ch20
+3. 大话设计模式，ch20
+
+
+
 ### 2.4 最重要：Command 模式
 
 **绝对要求**：
