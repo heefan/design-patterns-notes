@@ -1,0 +1,88 @@
+@startuml
+
+class GSK {
++ getSingleViewContoller
++ getDoubleViewController
+}
+
+
+package "ViewController" {
+class GSKViewControllerBuilder {
+ {abstract} + createContentView();
+ {abstract} + createPadView();
+}
+
+
+class GSKSingleViewController {
+ + createSingleViewController();
+ + createSingleContentView()
+ + createKeypadView()
+ ---
+ - _gsk1stTitleDataModel : GSK1stTitleDataModel
+}
+
+
+class GSKDoubleViewController {
+ + createDoubleViewController();
+ + createDoubleContentView()
+ + createKeypadView()
+}
+
+GSKViewControllerFactory <|-- GSKSingleViewController
+GSKViewControllerFactory <|-- GSKDoubleViewController
+}
+' ------- Product Part: Content View --------
+
+package "View" {
+  class GSKContentView {
+  }
+
+  class GSKDoubleContentView {
+  }
+
+  class GSKSingleContentView {
+  }
+
+  GSKContentView <|-- GSKDoubleContentView
+  GSKContentView <|-- GSKSingleContentView
+
+  ' ------- Product Part: KeypadView ------
+
+  class GSKPadView {
+  }
+
+  class GSKDefaultPad {
+  }
+
+  class GSKSixDigitPad {
+  }
+
+  GSKPadView <|-- GSKDefaultPad
+  GSKPadView <|-- GSKSixDigitPad
+}
+
+
+' -------- Product Part: Data Modal -------
+package "Data Models" {
+  class GSK1stTitleLabelDataModel {
+  }
+
+  class GSK1stSecretLabelDataModel {
+  }
+
+  class GSKSecondTitleLabelDataModel {
+  }
+
+  class GSK2ndSecretLabelDataModel {
+  }
+}
+
+' ---------
+GSKSingleViewController  "1" *-- "1"  GSKSingleContentView
+GSKSingleViewController "1" *-- "1" GSKDefaultPad
+GSKSingleViewController "1" *-- "1" GSK1stTitleLabelDataModel
+GSKSingleViewController "1" *-- "1" GSK1stSecretLabelDataModel
+
+
+
+@enduml
