@@ -41,6 +41,12 @@ class RedheadDuck: Duck {
     }
 }
 
+class RubberDuck: Duck {
+  	override func display() {
+    	  print("Rubber Duck appearance")
+  	}
+}
+
 //--- User -----
 let mallardDuck = MallardDuck()
 mallardDuck.display()
@@ -48,12 +54,6 @@ mallardDuck.display()
 let redheadDuck = RedheadDuck()
 redheadDuck.display()
 ```
-
-
-
-### User Expectation
-
-As a user, I want to a certain Duck, and perform `swim` or `quack` behaviour. 
 
 
 
@@ -121,69 +121,22 @@ rubberDuck.display()
 
 
 
+### Code Review: 
 
-
-## New Requirement: Add `fly` function to Duck 
-
-
-
-```swift
-import Foundation
-
-protocol Duck {
-    func quack()
-    func swim()
-    func display()
-    func fly()
-}
-
-extension Duck {
-     func fly() {
-          print("fly with wind")
-     }
-}
-
-```
+So far everything looks good if the requirement is just simple. 
 
 
 
-  🐞: `RubberDuck` Cannot fly. 
+## New Requirement
+
+`FlyWithWings, FlyWithRocket, Quack, MuteQuack and Squeak`
 
 
+### Before start: Well known Design Principle
 
-```swift
-//...
-class RubberDuck: Duck {
-     func fly() {
-    		return;  // I cannot fly, if someone call, I just return. 
-     }
-      
-     //...
-}
-```
+<img src="./images/5.png"/>
 
-
-
-### Code Review
-
-☑️ **Redundant Code** for `RubberDuck::fly`.  The function does nothing but we have to maintain the code. 
-
-The `fly()` function is from the `protocol Duck`,  can I adopt the useful function I need? 
-
-
-
-![](./images/3.png)
-
-
-
-### Code Review:
-
-1. Many classes  have to be added with `Flyable protocol`.  A bug would happen if we miss to add the flyable. 
-2. We have to examine all the existing class and let the classes inherit with suitable behaviour. 
-
-
-
-### Solution: DESIGN PRINCIPLE
+As an experienced developer, we need to think about design principle when we apply requirement changes. 
 
 > 1. Identify the aspects of your application that vary and separate them from what stays the same. 
 > 2. Program to protocol, not an implementation. 
@@ -191,7 +144,103 @@ The `fly()` function is from the `protocol Duck`,  can I adopt the useful functi
 
 
 
-## Strategy Pattern
+```swift
+import Foundation
+
+/* *********** fly   ****************/
+protocol Flyable {
+    func fly()
+}
+
+protocol FlyWithWings: Flyable { }
+extension FlyWithWings {
+    func fly() {
+        print("I can fly with wings")
+    }
+}
+
+protocol FlyNoWay: Flyable { }
+extension FlyNoWay {
+    func fly() {
+        print("I cannot fly")
+    }
+}
+
+protocol FlyWithRocket: Flyable { }
+extension FlyWithRocket {
+    func fly() {
+        print("I can fly with rocket")
+    }
+}
+
+/* ************ quack ***************/
+protocol Quackable {
+    func quack()
+}
+
+protocol Quack: Quackable { }
+extension Quack {
+    func quack() {
+        print("I can quack")
+    }
+}
+
+protocol Squeak: Quackable { }
+extension Squeak {
+    func quack() {
+        print("I can squeak")
+    }
+}
+
+protocol MuteQuack: Quackable { }
+extension MuteQuack {
+    func quack() {
+        print("I can not quack")
+    }
+}
+
+
+/* ************* Duck **************/
+protocol Duck {
+    func swim()
+    func display()
+}
+
+extension Duck {
+    func swim() {
+        print("All duck can sim")
+    }
+}
+
+class MallardDuck: Duck, FlyWithWings, Quack {
+    func display() {
+        print("Mallard Duck Appearance")
+    }
+}
+
+class RedhatDuck: Duck, FlyWithRocket, Quack {
+    func display() {
+        print("Redhead Duck Appearance")
+    }
+}
+
+class RubberDuck: Duck, FlyNoWay, MuteQuack {
+    func display() {
+        print("Rubber Duck Appearance")
+    }
+}
+```
+
+
+
+### Code Review:
+
+1. Do you think this will be the maintenance nightmare? 
+2. Can I apply FlyWithWings and FlyWithRocket together? 
+
+
+
+## Better Way: Strategy Pattern
 
 
 
@@ -200,63 +249,55 @@ The `fly()` function is from the `protocol Duck`,  can I adopt the useful functi
 
 
 ```swift
-protocol FlyBehavior {
+protocol Flyable {
     func fly()
 }
 
-class FlyWithWings: FlyBehavior {
+class FlyWithWings: Flyable {
     func fly() {
         print("I'm flying!")
     }
 }
 
-class FlyNoWay: FlyBehavior {
+class FlyNoWay: Flyable {
     func fly() {
         print("I can't fly!")
     }
 }
-```
 
-
-
-```swift
-protocol QuackBehavior {
+protocol Quackable {
     func quack()
 }
 
-class Quack: QuackBehavior {
+class Quack: Quackable {
     func quack() {
         print("Quack")
     }
 }
 
-class Squeak: QuackBehavior {
+class Squeak: Quackable {
     func quack() {
         print("Squeak")
     }
 }
 
-class MuteQuack: QuackBehavior {
+class MuteQuack: Quackable {
     func quack() {
         print("<< Silence >>")
     }
 }
-```
 
-
-
-```swift
 class Duck {
-    var flyBehavior: FlyBehavior
-    var quackBehavior: QuackBehavior
+    var Flyable: Flyable
+    var Quackable: Quackable
 
-    init(flyBehavior: FlyBehavior, quackBehavior: QuackBehavior) {
-        self.flyBehavior = flyBehavior
-        self.quackBehavior = quackBehavior
+    init(Flyable: Flyable, Quackable: Quackable) {
+        self.Flyable = Flyable
+        self.Quackable = Quackable
     }
 
     func performQuack() {
-        quackBehavior.quack()
+        Quackable.quack()
     }
 
     func swim() {
@@ -268,44 +309,32 @@ class Duck {
     }
 
     func performFly() {
-        flyBehavior.fly()
+        Flyable.fly()
     }
 }
-```
 
-
-
-```swift
 class ModelDuck: Duck {
     init() {
         // Our model duck begins life grounded, without a way to fly.
-        super.init(flyBehavior: FlyNoWay(), quackBehavior: Quack())
+        super.init(Flyable: FlyNoWay(), Quackable: Quack())
     }
 
     override func display() {
         print("I'm a model duck")
     }
 }
-```
 
-
-
-```swift
-class FlyRocketPowered: FlyBehavior {
+class FlyRocketPowered: Flyable {
     func fly() {
         print("I'm flying with a rocket!")
     }
 }
 
-```
 
-
-
-```swift
 let model = ModelDuck()
 model.display()
 model.performFly()
-model.flyBehavior = FlyRocketPowered()
+model.Flyable = FlyRocketPowered()
 model.performFly()
 ```
 
