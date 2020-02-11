@@ -61,7 +61,7 @@ redheadDuck.display()
 
 1. What’s the point to have `Duck` class here? 
     `let duck = Duck()`, but the duck is a generic object. 
-2. __Program to Class__   Encapsulation, Inheritance and Polymorphism. Looks good.  However,  I have heard __Program to Class__ is not right, we prefer __Program to Protocol in Swift__. 
+2. __Program to Implementation__   Encapsulation, Inheritance and Polymorphism. Looks good.  However,  I have heard __Program to Class__ is not right, we prefer __Program to Protocol in Swift__. 
 
 Let’s improve it as protocol version. 
 
