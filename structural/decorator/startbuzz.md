@@ -39,7 +39,7 @@ Senior developers think about design principle, because we want make our lives e
 >__Design Principles: OPC__     
 > Open to extension and close to modification.
 
-The design will create maintenance nightmare. 
+The design will create maintenance nightmare.      
 <img src="./images/2.png" width="600">       
 The design will modify the existing code, which likely will break the existing workflow or regression bugs.       
 <img src="./images/3.png" width="600">
