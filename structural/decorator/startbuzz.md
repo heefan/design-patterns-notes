@@ -14,10 +14,10 @@
 <img src="./images/1.png" width="600">
 
 ## Day 2
-> Story:  Expend business
-> Custom like toppings, SteamMilk, mocha, caramel, soy. And sometimes they want to have double. 
-> We'd like to support the following drink,
-> 1. HouseBlend + SteamMilk + Mocha
+> Story:  Expend business     
+> Custom like toppings, SteamMilk, mocha, caramel, soy. And sometimes they want to have double.      
+> We'd like to support the following drink,      
+> 1. HouseBlend + SteamMilk + Mocha 
 > 2. HouseBlend + SteamMilk
 > 3. HouseBlend + Mocha
 > 4. HouseBlend + soya
