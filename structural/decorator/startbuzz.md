@@ -48,4 +48,15 @@ We need to find out other way to implement.
 
 
 ## Decorator Pattern
+`extension`, `wrapper`     
+<img src="./images/4.png" width="400">
+
+> __Decorator Pattern__
+> 1. It attaches additional responsibilities to an object dynamically.
+> 2. Decorator provide flexible alternative to subclassing for extending functionality. 
+> 3. Conform "SRP" Single Responsibility  Principle
+> 4. Conform "OCP" Open Close Principle
+
+
+
 
