@@ -43,7 +43,7 @@ class Mocha: CondimentDecorator {
     }
 }
 
-class Soya: CondimentDecorator {
+class Soy: CondimentDecorator {
     var beverage: Beverage
     
     init(_ beverage: Beverage) {
@@ -51,7 +51,7 @@ class Soya: CondimentDecorator {
     }
     
     func description() -> String {
-        return beverage.description() + " Soya"
+        return beverage.description() + " Soy"
     }
     
     func cost() -> Float {

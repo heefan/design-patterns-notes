@@ -12,13 +12,14 @@ class Day2Test: XCTestCase {
     func testDarkRoastWithSoya() throws {
         var beverage: Beverage = DarkRoast()
         
-        beverage = Soya(beverage)
+        beverage = Soy(beverage)
+        beverage = Whip(beverage)
         
         let description = "\(beverage.description())"
         let cost = "\(beverage.cost())"
         
-        XCTAssertTrue(description == "DarkRoast Soya")
-        XCTAssertTrue(cost == "3.0")
+        XCTAssertTrue(description == "DarkRoast Soy whip")
+        XCTAssertTrue(cost == "4.0")
                       
         
     }
