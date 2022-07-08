@@ -9,7 +9,7 @@ import XCTest
 
 class Day2Test: XCTestCase {
 
-    func testDarkRoastWithSoya() throws {
+    func testDarkRoastWithSoy() throws {
         var beverage: Beverage = DarkRoast()
         
         beverage = Soy(beverage)
