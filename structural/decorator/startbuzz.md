@@ -11,7 +11,7 @@
 > __Scenarios:__   
 > When client order a cup of coffee, we show tell him/her the price. 
 
-<img src="./images/1.png" width="600">
+<img src="./images/1.png" width="800">
 
 ## Day 2
 > Story:  Expend business     
@@ -40,16 +40,16 @@ Senior developers think about design principle, because we want make our lives e
 > Open to extension and close to modification.
 
 The design will create maintenance nightmare.      
-<img src="./images/2.png" width="600">       
+<img src="./images/2.png" width="800">       
 The design will modify the existing code, which likely will break the existing workflow or regression bugs.       
-<img src="./images/3.png" width="600">
+<img src="./images/3.png" width="800">
 
 We need to find out other way to implement. 
 
 
 ## Decorator Pattern
 `extension`, `wrapper`     
-<img src="./images/4.png" width="600">
+<img src="./images/4.png" width="800">
 
 > __Decorator Pattern__
 > 1. It attaches additional responsibilities to an object dynamically.

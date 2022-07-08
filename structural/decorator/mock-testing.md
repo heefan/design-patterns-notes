@@ -1,0 +1,1 @@
+https://stablekernel.com/article/swift-design-patterns-in-practice-the-decorator-pattern/
